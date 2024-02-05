@@ -246,13 +246,6 @@ require('lazy').setup({
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
 
-  {
-    "kdheepak/lazygit.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
   { "numToStr/FTerm.nvim" },
 
   { import = 'custom.plugins' },

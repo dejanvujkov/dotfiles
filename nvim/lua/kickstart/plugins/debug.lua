@@ -40,6 +40,7 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
+    vim.keymap.set('n', '<F1>', dapui.toggle, { desc = 'Debug: Toggle UI' })
     vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
     vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })

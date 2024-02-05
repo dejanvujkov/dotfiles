@@ -7,7 +7,12 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    vim.keymap.set("n", "<leader>te", ":Neotree toggle left<CR>", { desc = "[T]oggle [e]xplorer" })
-    vim.keymap.set("n", "<leader>tb", ":Neotree buffers reveal float<CR>", { desc = "[T]oggle [b]uffers" })
+    require("neo-tree").setup({
+      close_if_last_windw = true,
+    })
+
+    vim.keymap.set("n", "<leader>te", ":Neotree toggle left reveal=true<CR>", { desc = "[T]oggle [e]xplorer" })
+    vim.keymap.set("n", "<leader>to", ":Neotree toggle left reveal=true source=buffers <CR>",
+      { desc = "[T]oggle [o]pened buffers" })
   end,
 }
