@@ -1,10 +1,5 @@
 -- debug.lua
---
 -- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
   -- NOTE: Yes, you can install new plugins here!
@@ -74,6 +69,23 @@ return {
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+
+    dap.adapters.coreclr = {
+      type = 'executable',
+      command = "/usr/local/bin/netcoredbg/netcoredbg", -- here dap expect to find netcoredbg
+      args = { '--interpreter=vscode' }
+    }
+
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to dll ", vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        end,
+      },
+    }
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
