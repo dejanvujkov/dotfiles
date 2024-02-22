@@ -287,7 +287,10 @@ vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
+vim.o.spell = true
 
+vim.o.showmatch = true
+vim.o.cursorline = true
 vim.o.completeopt = 'menuone,noselect'
 
 vim.o.termguicolors = true
