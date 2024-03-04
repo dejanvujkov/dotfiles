@@ -410,6 +410,9 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>s.', require('telescope.builtin').oldfiles,
+  { desc = '[S]earch recent files ("." for repeat)' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -529,7 +532,8 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 
-  nmap('<leader>cs', ':Format<CR>:w<CR>', '[C]ode format and [s]ave')
+  nmap('<leader>cs', ':Format<CR>:w<CR>', '[C]ode format and [S]ave')
+  nmap('<leader>cq', ':Format<CR>:w<CR>:bdel<CR>', '[C]ode format [S]ave and [Q]uit')
 end
 
 -- document existing key chains
