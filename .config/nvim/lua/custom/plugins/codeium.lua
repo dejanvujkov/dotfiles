@@ -1,9 +1,11 @@
 return {
-  'Exafunction/codeium.vim',
+  "Exafunction/codeium.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+  },
   config = function()
-    vim.keymap.set("i", "<c-.>", function() return vim.fn["codeium#Accept"]() end,
-      { expr = true, desc = "Codeium Accept" })
-    vim.keymap.set("i", "<c-x>", function() return vim.fn["codeium#Clear"]() end,
-      { expr = true, desc = "Codeium Clear" })
+    require("codeium").setup({
+    })
   end
 }
