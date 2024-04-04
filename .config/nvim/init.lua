@@ -552,6 +552,7 @@ require('which-key').register {
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
   ['<leader>q'] = { name = '[Q]uit', _ = 'which_key_ignore' },
+  ['<leader>ct'] = { name = '[C]ode [T]est', _ = 'which_key_ignore' },
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
