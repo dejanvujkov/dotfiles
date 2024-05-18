@@ -2,12 +2,12 @@
 -- Shows how to use the DAP plugin to debug your code.
 
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTE: And you can specify dependencies as well
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
+    -- Creates nice virtual text for current values
+    'theHamsta/nvim-dap-virtual-text',
 
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
@@ -33,6 +33,8 @@ return {
         'delve',
       },
     }
+
+    require("nvim-dap-virtual-text").setup()
 
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<F1>', dapui.toggle, { desc = 'Debug: Toggle UI' })
