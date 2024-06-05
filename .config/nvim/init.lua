@@ -24,6 +24,7 @@ them once you know what you're doing, but they should serve as a guide for when 
 are first encountering a few different constructs in your nvim config.
 --]]
 
+vim.cmd("language en_US")
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
