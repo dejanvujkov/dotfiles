@@ -663,6 +663,14 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
+
+  cmp.setup.filetype('sql', {
+    sources = {
+      { name = "vim-dadbod-completion" },
+      { name = "buffer" },
+    }
+  }),
+
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
