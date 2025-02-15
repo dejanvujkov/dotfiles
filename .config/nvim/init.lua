@@ -563,7 +563,12 @@ require('which-key').register({
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require('mason').setup()
+require('mason').setup({
+  registries = {
+    "github:mason-org/mason-registry",  -- default
+    "github:Crashdummyy/mason-registry" -- needed for roslyn language server
+  }
+})
 require('mason-lspconfig').setup()
 
 -- Enable the following language servers
@@ -580,6 +585,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
+  roslyn = { filetypes = { 'cs' } },
   html = { filetypes = { 'html', 'twig', 'hbs' } },
 
   lua_ls = {
@@ -674,7 +680,6 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
-    { name = 'codeium' },
   },
 }
 
