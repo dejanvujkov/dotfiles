@@ -1,16 +1,16 @@
 return {
-  'stevearc/oil.nvim',
+  "stevearc/oil.nvim",
   opts = {},
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    require('oil').setup {
+    require("oil").setup({
       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
       -- Set to false if you still want to use netrw.
       default_file_explorer = true,
       -- Id is automatically added at the beginning, and name at the end
       -- See :help oil-columns
       columns = {
-        'icon',
+        "icon",
         -- "permissions",
         -- "size",
         -- "mtime",
@@ -18,18 +18,18 @@ return {
       -- Buffer-local options to use for oil buffers
       buf_options = {
         buflisted = false,
-        bufhidden = 'hide',
+        bufhidden = "hide",
       },
       -- Window-local options to use for oil buffers
       win_options = {
         wrap = false,
-        signcolumn = 'no',
+        signcolumn = "no",
         cursorcolumn = false,
-        foldcolumn = '0',
+        foldcolumn = "0",
         spell = false,
         list = false,
         conceallevel = 3,
-        concealcursor = 'nvic',
+        concealcursor = "nvic",
       },
       -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
       delete_to_trash = true,
@@ -44,7 +44,7 @@ return {
       cleanup_delay_ms = 2000,
       -- Constrain the cursor to the editable parts of the oil buffer
       -- Set to `false` to disable, or "name" to keep it on the file names
-      constrain_cursor = 'editable',
+      constrain_cursor = "editable",
       -- Set to true to watch the filesystem for changes and reload oil
       experimental_watch_for_changes = false,
       -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
@@ -54,16 +54,16 @@ return {
       -- Set to `false` to remove a keymap
       -- See :help oil-actions for a list of all available actions
       keymaps = {
-        ['g?'] = 'actions.show_help',
-        ['<CR>'] = 'actions.select',
-        ['<C-c>'] = 'actions.close',
-        ['<C-l>'] = 'actions.refresh',
-        ['-'] = 'actions.parent',
-        ['_'] = 'actions.open_cwd',
+        ["g?"] = "actions.show_help",
+        ["<CR>"] = "actions.select",
+        ["<C-c>"] = "actions.close",
+        ["<C-l>"] = "actions.refresh",
+        ["-"] = "actions.parent",
+        ["_"] = "actions.open_cwd",
       },
       -- Configuration for the floating keymaps help window
       keymaps_help = {
-        border = 'rounded',
+        border = "rounded",
       },
       -- Set to false to disable all of the above keymaps
       use_default_keymaps = true,
@@ -72,7 +72,7 @@ return {
         show_hidden = false,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
-          return vim.startswith(name, '.')
+          return vim.startswith(name, ".")
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
         is_always_hidden = function(name, bufnr)
@@ -85,7 +85,7 @@ return {
         padding = 2,
         max_width = 0,
         max_height = 0,
-        border = 'rounded',
+        border = "rounded",
         win_options = {
           winblend = 0,
         },
@@ -113,7 +113,7 @@ return {
         min_height = { 5, 0.1 },
         -- optionally define an integer/float for the exact height of the preview window
         height = nil,
-        border = 'rounded',
+        border = "rounded",
         win_options = {
           winblend = 0,
         },
@@ -128,17 +128,17 @@ return {
         max_height = { 10, 0.9 },
         min_height = { 5, 0.1 },
         height = nil,
-        border = 'rounded',
-        minimized_border = 'none',
+        border = "rounded",
+        minimized_border = "none",
         win_options = {
           winblend = 0,
         },
       },
       -- Configuration for the floating SSH window
       ssh = {
-        border = 'rounded',
+        border = "rounded",
       },
-    }
-    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    })
+    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   end,
 }
