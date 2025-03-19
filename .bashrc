@@ -41,11 +41,12 @@ export PATH="$PATH:/var/home/dejan/.lmstudio/bin"
 # alias use-dotnet9='export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet" && export PATH="$DOTNET_ROOT/bin:$PATH"'
 
 export PATH="$HOME/.dotnet-core-tools:$PATH"
+export DOTNET_ROOT="$HOME/.dotnet-core-tools"
 
 alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 
 function nvims() {
-	items=("default", "lazy")
+	items=("default", "LazyVim")
 	config=$(printf "%s\n" "${items[@]}" | fzf --prompt="config> " --layout=reverse --height=50% --border --exit-0)
 	if [[ -z "$config" ]]; then
 		echo "No config selected"
