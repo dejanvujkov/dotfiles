@@ -1,5 +1,4 @@
 eval "$(starship init zsh)"
-eval "$(pyenv init --path)"
 
 # Add .NET 8
 # export DOTNET_8_ROOT="/opt/homebrew/opt/dotnet@8"
@@ -18,6 +17,7 @@ export DOTNET_ROOT="$HOME/.dotnet-core-tools"
 
 alias ll='ls -l'
 alias la='ls -a'
+alias jmeter='open /opt/homebrew/bin/jmeter'
 
 alias v='nvim'
 alias vl="NVIM_APPNAME=LazyVim nvim"
