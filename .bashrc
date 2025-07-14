@@ -25,11 +25,9 @@ fi
 unset rc
 
 alias ll='ls -al'
+alias dev='distrobox-enter dev'
 
 eval "$(starship init bash)"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/var/home/dejan/.lmstudio/bin"
 
 # export DOTNET_8_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet@8"
 # export PATH="$DOTNET_8_ROOT/bin:$PATH"
@@ -40,8 +38,8 @@ export PATH="$PATH:/var/home/dejan/.lmstudio/bin"
 # alias use-dotnet8='export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet@8" && export PATH="$DOTNET_ROOT/bin:$PATH"'
 # alias use-dotnet9='export DOTNET_ROOT="/home/linuxbrew/.linuxbrew/opt/dotnet" && export PATH="$DOTNET_ROOT/bin:$PATH"'
 
-export PATH="$HOME/.dotnet-core-tools:$PATH"
-export DOTNET_ROOT="$HOME/.dotnet-core-tools"
+# export PATH="$HOME/.dotnet-core-tools:$PATH"
+# export DOTNET_ROOT="$HOME/.dotnet-core-tools"
 
 alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 
