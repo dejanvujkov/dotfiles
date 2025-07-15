@@ -14,6 +14,7 @@ eval "$(starship init zsh)"
 
 export PATH="$HOME/.dotnet-core-tools:$PATH"
 export DOTNET_ROOT="$HOME/.dotnet-core-tools"
+export PATH="$PATH:/Users/dejanvujkov/.dotnet/tools"
 
 alias ll='ls -l'
 alias la='ls -a'

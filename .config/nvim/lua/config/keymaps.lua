@@ -23,3 +23,11 @@ vim.keymap.set("n", "<leader>s/", function()
 end, { desc = "[S]earch [/] in Open Files" })
 
 vim.cmd.colorscheme("tokyonight-night")
+
+require("CopilotChat").setup({
+  mappings = {
+    close = {
+      normal = "<leader>aQ",
+    },
+  },
+})
