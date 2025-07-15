@@ -1,5 +1,4 @@
 eval "$(starship init zsh)"
-eval "$(pyenv init --path)"
 
 # Add .NET 8
 # export DOTNET_8_ROOT="/opt/homebrew/opt/dotnet@8"
