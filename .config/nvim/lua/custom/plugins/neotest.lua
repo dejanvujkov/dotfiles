@@ -72,7 +72,7 @@ return {
     optional = true,
   -- stylua: ignore
   keys = {
-    { "<leader>ed", function() require("neotest").run.run({strategy = "dap"}) end, desc = "Debug Nearest" },
+    { "<leader>ed", function() require("neotest").run.run({strategy = "dap", suite=false}) end, desc = "Debug Nearest" },
   },
   },
 }

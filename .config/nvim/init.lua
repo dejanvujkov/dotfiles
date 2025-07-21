@@ -745,14 +745,24 @@ require('lazy').setup({
       require('conform').setup {
         notify_on_error = false,
         formatters_by_ft = {
+          -- to check filetype type :set filetype?
           lua = { 'stylua' },
           cs = { 'csharpier' },
+          javascript = { 'prettier' },
+          typescript = { 'prettier' },
+          htmlangular = { 'prettier' },
+          html = { 'prettier' },
         },
         formatters = {
           csharpier = {
             command = 'csharpier',
             args = { 'format', '$FILENAME' },
             stdin = false,
+          },
+          prettier = {
+            command = 'prettier',
+            args = { '--stdin-filepath', '$FILENAME' },
+            stdin = true,
           },
         },
         format_on_save = function(bufnr)
