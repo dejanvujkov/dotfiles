@@ -29,6 +29,9 @@ do
 	fi
 done
 
+git config --global user.email "dejanvujkov@gmail.com"
+git config --global user.name "Dejan Vujkov"
+
 
 # create .dotnet-core-tools folder if not exists
 if ! [ -d "$HOME/.dotnet-core-tools" ]
@@ -49,6 +52,9 @@ then
 
 	else echo ".NET Core is already installed, skipping"
 	fi
+
+	dotnet tool install csharpier --tool-path ~/.dotnet-core-tools
+
 
 else echo ".dotnet-core-tools folder already exists, skipping"
 fi
