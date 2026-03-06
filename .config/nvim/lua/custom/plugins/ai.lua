@@ -1,97 +1,98 @@
 return {
   {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'main',
-    cmd = 'CopilotChat',
-    opts = function()
-      local user = vim.env.USER or 'User'
-      user = user:sub(1, 1):upper() .. user:sub(2)
-      return {
-        auto_insert_mode = true,
-        question_header = '  ' .. user .. ' ',
-        answer_header = '  Copilot ',
-        window = {
-          width = 0.4,
-        },
-      }
-    end,
+    'coder/claudecode.nvim',
+    opts = {
+      terminal = {
+        split_side = 'right',
+        split_width_percentage = 0.4,
+        provider = 'native',
+      },
+    },
     keys = {
-      { '<c-s>', '<CR>', ft = 'copilot-chat', desc = 'Submit Prompt', remap = true },
-      { '<leader>a', '', desc = '+ai', mode = { 'n', 'v' } },
+      { '<leader>a', nil, desc = '+ai', mode = { 'n', 'v' } },
       {
         '<leader>aa',
-        function()
-          return require('CopilotChat').toggle()
-        end,
-        desc = 'Toggle (CopilotChat)',
+        '<cmd>ClaudeCode<cr>',
+        desc = 'Toggle Claude',
         mode = { 'n', 'v' },
       },
       {
         '<leader>ax',
-        function()
-          return require('CopilotChat').reset()
-        end,
-        desc = 'Clear (CopilotChat)',
+        '<cmd>ClaudeCodeFocus<cr>',
+        desc = 'Focus Claude',
         mode = { 'n', 'v' },
       },
       {
         '<leader>aq',
-        function()
-          vim.ui.input({
-            prompt = 'Quick Chat: ',
-          }, function(input)
-            if input ~= '' then
-              require('CopilotChat').ask(input)
-            end
-          end)
-        end,
-        desc = 'Quick Chat (CopilotChat)',
+        '<cmd>ClaudeCode<cr>',
+        desc = 'Close Claude',
         mode = { 'n', 'v' },
       },
       {
+        '<C-l>',
+        '<cmd>ClaudeCodeFocus<cr>',
+        desc = 'Focus Claude Code panel',
+        mode = { 'n' },
+      },
+      {
+        '<C-h>',
+        '<C-\\><C-n><C-w>h',
+        desc = 'Navigate left from terminal',
+        mode = { 't' },
+      },
+      {
+        '<C-j>',
+        '<C-\\><C-n><C-w>j',
+        desc = 'Navigate down from terminal',
+        mode = { 't' },
+      },
+      {
+        '<C-k>',
+        '<C-\\><C-n><C-w>k',
+        desc = 'Navigate up from terminal',
+        mode = { 't' },
+      },
+      {
+        '<C-l>',
+        '<C-\\><C-n><C-w>l',
+        desc = 'Navigate right from terminal',
+        mode = { 't' },
+      },
+      {
+        '<Esc>',
+        '<C-\\><C-n>',
+        desc = 'Exit terminal insert mode',
+        mode = { 't' },
+      },
+      {
         '<leader>ap',
-        function()
-          require('CopilotChat').select_prompt()
-        end,
-        desc = 'Prompt Actions (CopilotChat)',
+        '<cmd>ClaudeCodeSelectModel<cr>',
+        desc = 'Select Claude Model',
         mode = { 'n', 'v' },
       },
-    },
-    config = function(_, opts)
-      local chat = require 'CopilotChat'
-
-      vim.api.nvim_create_autocmd('BufEnter', {
-        pattern = 'copilot-chat',
-        callback = function()
-          vim.opt_local.relativenumber = false
-          vim.opt_local.number = false
-        end,
-      })
-
-      chat.setup(opts)
-    end,
-  },
-  -- copilot
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    build = ':Copilot auth',
-    event = 'BufReadPost',
-    opts = {
-      suggestion = {
-        enabled = not vim.g.ai_cmp,
-        auto_trigger = true,
-        hide_during_completion = vim.g.ai_cmp,
-        keymap = {
-          accept = '<Tab>',
-          next = '<M-]>',
-          prev = '<M-[>',
-        },
+      {
+        '<leader>as',
+        '<cmd>ClaudeCodeSend<cr>',
+        desc = 'Send selection to Claude',
+        mode = { 'v' },
       },
-      panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
+      {
+        '<leader>ab',
+        '<cmd>ClaudeCodeAdd %<cr>',
+        desc = 'Add current buffer to Claude',
+        mode = { 'n' },
+      },
+      {
+        '<leader>aA',
+        '<cmd>ClaudeCodeDiffAccept<cr>',
+        desc = 'Accept Claude diff',
+        mode = { 'n', 'v' },
+      },
+      {
+        '<leader>aD',
+        '<cmd>ClaudeCodeDiffDeny<cr>',
+        desc = 'Deny Claude diff',
+        mode = { 'n', 'v' },
       },
     },
   },
