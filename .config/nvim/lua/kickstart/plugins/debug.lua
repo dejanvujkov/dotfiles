@@ -24,7 +24,6 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
 
-    'Samsung/netcoredbg',
     'theHamsta/nvim-dap-virtual-text',
   },
   keys = {
@@ -147,6 +146,7 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     require('nvim-dap-virtual-text').setup()
+    require('easy-dotnet.netcoredbg').register_dap_variables_viewer()
 
     -- require('netcoredbg').setup() {}
     -- Install golang specific config
@@ -155,22 +155,6 @@ return {
         -- On Windows delve must be run attached or it crashes.
         -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
         detached = vim.fn.has 'win32' == 0,
-      },
-    }
-
-    dap.adapters.coreclr = {
-      type = 'executable',
-      command = vim.fn.stdpath 'data' .. '/mason/packages/netcoredbg/netcoredbg',
-      args = { '--interpreter=vscode' },
-    }
-    dap.configurations.cs = {
-      {
-        type = 'coreclr',
-        name = 'Launch - netcoredbg',
-        request = 'launch',
-        program = function()
-          return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-        end,
       },
     }
   end,

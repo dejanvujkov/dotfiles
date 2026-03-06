@@ -54,3 +54,8 @@ function nvims() {
 	fi
 	NVIM_APPNAME=$config nvim $@
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dejanvujkov/.lmstudio/bin"
+# End of LM Studio CLI section
+

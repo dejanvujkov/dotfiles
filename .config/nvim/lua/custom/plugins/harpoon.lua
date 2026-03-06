@@ -7,16 +7,16 @@ return {
 
     harpoon:setup()
 
-    vim.keymap.set('n', '<leader>da', function()
+    vim.keymap.set('n', '<leader>ha', function()
       harpoon:list():add()
-    end, { desc = 'Harpoon: [D]ocument [A]dd to Harpoon' })
-    vim.keymap.set('n', '<leader>dr', function()
-      harpoon:list():remove()
-    end, { desc = 'Harpoon: [D]ocument [R]emove' })
+    end, { desc = 'Harpoon: [A]dd' })
+    -- vim.keymap.set('n', '<leader>hr', function()
+    --   harpoon:list():remove()
+    -- end, { desc = 'Harpoon: [R]emove' })
 
-    vim.keymap.set('n', '<leader>dt', function()
+    vim.keymap.set('n', '<leader>hh', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end, { desc = 'Harpoon: [T]oogle Harpoon' })
+    end, { desc = 'Harpoon: Toogle [H]arpoon' })
 
     vim.keymap.set('n', '<leader>1', function()
       harpoon:list():select(1)

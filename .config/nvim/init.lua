@@ -325,13 +325,12 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>D', group = '[D]ebug' },
+        { '<leader>d', group = '[D]otnet / [D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>e', group = 'T[e]st' },
+        { '<leader>t', group = '[T]oggle' }, 
+        { '<leader>e', group = 'T[e]st (neotest)' },
         { '<leader>g', group = '[G]it' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
@@ -550,7 +549,7 @@ require('lazy').setup({
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>R', vim.lsp.buf.rename, '[R]ename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -934,8 +933,27 @@ require('lazy').setup({
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
-
+      local ai = require 'mini.ai'
+      ai.setup {
+        n_lines = 500,
+        custom_textobjects = {
+          f = ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' },
+          c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' },
+          -- Parameters: exclude punctuation
+          a = ai.gen_spec.treesitter {
+            a = '@parameter.outer',
+            i = '@parameter.inner',
+            -- only consider identifiers inside the parameter node
+            filter = function(node)
+              return node:type() ~= ',' -- skip comma nodes
+            end,
+          },
+          o = ai.gen_spec.treesitter {
+            a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+            i = { '@block.inner', '@conditional.inner', '@loop.inner' },
+          },
+        },
+      }
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -986,6 +1004,37 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        textobjects = {
+          move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+              [']f'] = '@function.outer',
+              [']a'] = '@parameter.outer',
+            },
+            goto_next_end = {
+              [']F'] = '@function.outer',
+              [']A'] = '@parameter.outer',
+            },
+            goto_previous_start = {
+              ['[f'] = '@function.outer',
+              ['[a'] = '@parameter.outer',
+            },
+            goto_previous_end = {
+              ['[F'] = '@function.outer',
+              ['[A'] = '@parameter.outer',
+            },
+          },
+        },
+      }
+    end,
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the

@@ -1,11 +1,9 @@
 return {
   {
     'nvim-neotest/neotest',
-    dependencies = { 'nvim-neotest/nvim-nio', 'Issafalcon/neotest-dotnet' },
+    dependencies = { 'nvim-neotest/nvim-nio' },
     opts = {
-      adapters = {
-        ['neotest-dotnet'] = {},
-      },
+      adapters = {},
       status = { virtual_text = true },
       output = { open_on_run = true },
     },
@@ -14,7 +12,6 @@ return {
       vim.diagnostic.config({
         virtual_text = {
           format = function(diagnostic)
-            -- Replace newline and tab characters with space for more compact diagnostics
             local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
             return message
           end,
@@ -72,7 +69,7 @@ return {
     optional = true,
   -- stylua: ignore
   keys = {
-    { "<leader>ed", function() require("neotest").run.run({strategy = "dap", suite=false}) end, desc = "Debug Nearest" },
+    { "<leader>ed", function() require("neotest").run.run({strategy = "dap", suite=false}) end, desc = "Debug Nearest (Neotest)" },
   },
   },
 }
