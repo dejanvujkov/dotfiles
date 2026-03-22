@@ -29,36 +29,6 @@ return {
         mode = { 'n', 'v' },
       },
       {
-        '<C-l>',
-        '<cmd>ClaudeCodeFocus<cr>',
-        desc = 'Focus Claude Code panel',
-        mode = { 'n' },
-      },
-      {
-        '<C-h>',
-        '<C-\\><C-n><C-w>h',
-        desc = 'Navigate left from terminal',
-        mode = { 't' },
-      },
-      {
-        '<C-j>',
-        '<C-\\><C-n><C-w>j',
-        desc = 'Navigate down from terminal',
-        mode = { 't' },
-      },
-      {
-        '<C-k>',
-        '<C-\\><C-n><C-w>k',
-        desc = 'Navigate up from terminal',
-        mode = { 't' },
-      },
-      {
-        '<C-l>',
-        '<C-\\><C-n><C-w>l',
-        desc = 'Navigate right from terminal',
-        mode = { 't' },
-      },
-      {
         '<Esc>',
         '<C-\\><C-n>',
         desc = 'Exit terminal insert mode',
