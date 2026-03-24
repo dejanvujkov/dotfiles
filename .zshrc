@@ -43,3 +43,6 @@ export PATH="$PATH:/Users/dejanvujkov/.lmstudio/bin"
 # End of LM Studio CLI section
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# opencode
+export PATH=/Users/dejanvujkov/.opencode/bin:$PATH
