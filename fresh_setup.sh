@@ -43,8 +43,8 @@ if ! [ -d "$HOME/.dotnet-core-tools" ]; then
 
 	# install .NET Core 8 and Latest SDKs if not installed
 	if ! command -v dotnet &>/dev/null; then
-		"$HOME/.dotnet-core-tools/dotnet-install.sh" --channel Current --install-dir "$HOME/.dotnet-core-tools/"
 		"$HOME/.dotnet-core-tools/dotnet-install.sh" --channel 8.0 --install-dir "$HOME/.dotnet-core-tools/"
+		"$HOME/.dotnet-core-tools/dotnet-install.sh" --channel 10.0 --install-dir "$HOME/.dotnet-core-tools/"
 
 	else
 		echo ".NET Core is already installed, skipping"
