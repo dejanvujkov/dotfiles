@@ -55,3 +55,10 @@ function nvims() {
 	fi
 	NVIM_APPNAME=$config nvim $@
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/dejanvujkov/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi
