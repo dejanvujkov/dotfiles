@@ -50,3 +50,5 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH=/Users/dejanvujkov/.opencode/bin:$PATH
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit

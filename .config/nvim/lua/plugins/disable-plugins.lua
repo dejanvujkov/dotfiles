@@ -1,4 +1,5 @@
 return {
-  -- disable bufferline
   { "akinsho/bufferline.nvim", enabled = false },
+  { "folke/trouble.nvim", enabled = false },
+  { "folke/noice.nvim", enabled = false },
 }

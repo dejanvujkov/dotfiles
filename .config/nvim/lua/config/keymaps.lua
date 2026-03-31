@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>te", ":Neotree toggle left reveal=true<CR>", { desc = "[T]oggle [e]xplorer" })
-vim.keymap.set({ "n", "t" }, "<leader>tt", require("FTerm").toggle, { desc = "[T]oggle [t]erminal" })
+vim.keymap.set({ "n", "t" }, "<leader>T", require("FTerm").toggle, { desc = "[T]oggle [t]erminal" })
 
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
@@ -19,4 +19,11 @@ vim.keymap.set("n", "<leader>s/", function()
   })
 end, { desc = "[S]earch [/] in Open Files" })
 
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("tokyonight-moon")
+
+vim.keymap.set("n", "<F1>", require("dapui").toggle, { desc = "Toggle DAP UI" })
+vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Start/Continue Debugging" })
+vim.keymap.set("n", "<F10>", require("dap").step_over, { desc = "Step Over" })
+vim.keymap.set("n", "<F11>", require("dap").step_into, { desc = "Step Into" })
+vim.keymap.set("n", "<F9>", require("dap").step_out, { desc = "Step Out" })
+vim.keymap.set("n", "<F8>", require("dap").repl.toggle, { desc = "Toggle REPL" })
