@@ -7,6 +7,8 @@ return {
         -- self-contained net6 binary. The net6 binary cannot load EF Core 9.x analyzers,
         -- which causes all textDocument/codeAction requests to crash with FileNotFoundException.
         cmd = {
+          "env",
+          "DOTNET_ROLL_FORWARD=Major",
           "dotnet",
           vim.fn.expand("~/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll"),
           "-z",

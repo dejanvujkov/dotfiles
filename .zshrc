@@ -13,7 +13,7 @@ eval "$(starship init zsh)"
 #
 
 export PATH="$HOME/.dotnet-core-tools:$PATH"
-export DOTNET_ROOT="$HOME/.dotnet-core-tools"
+export DOTNET_ROOT="/usr/local/share/dotnet"
 export PATH="$PATH:/Users/dejanvujkov/.dotnet/tools"
 
 alias ll='ls -l'
@@ -52,3 +52,5 @@ export PATH=/Users/dejanvujkov/.opencode/bin:$PATH
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
+
+eval "$(zoxide init zsh)"
