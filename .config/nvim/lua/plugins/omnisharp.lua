@@ -28,6 +28,20 @@ return {
           -- Force the capability so the keymap and vim.lsp.buf.code_action() work.
           client.server_capabilities.codeActionProvider = true
         end,
+        on_attach = function(_, bufnr)
+          -- Neovim 0.11's vim.lsp.buf.code_action() only includes diagnostics whose
+          -- range covers the exact cursor position. OmniSharp returns no actions when
+          -- the cursor sits next to (not inside) an Info diagnostic, so override the
+          -- keymap to pass every diagnostic on the current line.
+          vim.keymap.set({ "n", "v" }, "<leader>ca", function()
+            vim.lsp.buf.code_action({
+              context = {
+                diagnostics = vim.diagnostic.get(bufnr, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 }),
+                triggerKind = vim.lsp.protocol.CodeActionTriggerKind.Invoked,
+              },
+            })
+          end, { buffer = bufnr, desc = "Code Action" })
+        end,
         settings = {
           RoslynExtensionsOptions = {
             EnableAnalyzersSupport = true,

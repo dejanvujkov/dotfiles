@@ -54,3 +54,6 @@ fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
 eval "$(zoxide init zsh)"
+
+# OpenClaw Completion
+source "/Users/dejanvujkov/.openclaw/completions/openclaw.zsh"
