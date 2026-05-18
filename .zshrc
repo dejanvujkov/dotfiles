@@ -12,9 +12,14 @@ eval "$(starship init zsh)"
 # alias use-dotnet9='export DOTNET_ROOT="/opt/homebrew/opt/dotnet" && export PATH="$DOTNET_ROOT/bin:$PATH"'
 #
 
-export PATH="$HOME/.dotnet-core-tools:$PATH"
-export DOTNET_ROOT="/usr/local/share/dotnet"
-export PATH="$PATH:/Users/dejanvujkov/.dotnet/tools"
+if [ -x "$HOME/.dotnet-core-tools/dotnet" ]; then
+  export DOTNET_ROOT="$HOME/.dotnet-core-tools"
+  export PATH="$DOTNET_ROOT:$PATH"
+else
+  export DOTNET_ROOT="/usr/local/share/dotnet"
+  export PATH="$DOTNET_ROOT:$PATH"
+fi
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 alias ll='ls -l'
 alias la='ls -a'
